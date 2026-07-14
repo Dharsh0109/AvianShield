@@ -1,0 +1,157 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,300;0,14..32,400;0,14..32,500;0,14..32,600;0,14..32,700;1,14..32,400&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+  }
+  html, body, #root {
+    height: 100%;
+    font-family: 'Inter', system-ui, sans-serif;
+  }
+  body {
+    background: linear-gradient(135deg, #f0f4ff 0%, #fafbff 40%, #f5f0ff 100%);
+    background-attachment: fixed;
+    color: #1e293b;
+  }
+  * {
+    box-sizing: border-box;
+  }
+}
+
+@layer components {
+  /* ── Glassmorphism card ── */
+  .glass {
+    background: rgba(255, 255, 255, 0.72);
+    backdrop-filter: blur(20px) saturate(180%);
+    -webkit-backdrop-filter: blur(20px) saturate(180%);
+    border: 1px solid rgba(255, 255, 255, 0.55);
+    box-shadow: 0 8px 32px rgba(59, 110, 246, 0.08), 0 2px 8px rgba(0, 0, 0, 0.04), inset 0 1px 0 rgba(255,255,255,0.9);
+  }
+  .glass-strong {
+    background: rgba(255, 255, 255, 0.88);
+    backdrop-filter: blur(32px) saturate(200%);
+    -webkit-backdrop-filter: blur(32px) saturate(200%);
+    border: 1px solid rgba(255, 255, 255, 0.7);
+    box-shadow: 0 20px 60px rgba(59, 110, 246, 0.1), 0 4px 16px rgba(0, 0, 0, 0.05), inset 0 1px 0 rgba(255,255,255,1);
+  }
+  .glass-sidebar {
+    background: rgba(255, 255, 255, 0.78);
+    backdrop-filter: blur(40px) saturate(200%);
+    -webkit-backdrop-filter: blur(40px) saturate(200%);
+    border-right: 1px solid rgba(255, 255, 255, 0.6);
+    box-shadow: 4px 0 24px rgba(59, 110, 246, 0.06);
+  }
+  .glass-nav {
+    background: rgba(255, 255, 255, 0.82);
+    backdrop-filter: blur(24px) saturate(180%);
+    -webkit-backdrop-filter: blur(24px) saturate(180%);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.6);
+    box-shadow: 0 1px 0 rgba(59, 110, 246, 0.06), 0 4px 16px rgba(0,0,0,0.03);
+  }
+
+  /* ── Shimmer skeleton ── */
+  .skeleton {
+    background: linear-gradient(90deg, rgba(59,110,246,0.06) 25%, rgba(59,110,246,0.12) 50%, rgba(59,110,246,0.06) 75%);
+    background-size: 200% 100%;
+    animation: shimmer 1.8s linear infinite;
+    border-radius: 0.75rem;
+  }
+
+  /* ── Smooth interactive states ── */
+  .interactive {
+    transition: all 250ms cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  .interactive:hover {
+    transform: translateY(-1px);
+  }
+  .interactive:active {
+    transform: translateY(0px) scale(0.99);
+  }
+
+  /* ── Brand button ── */
+  .btn-brand {
+    background: linear-gradient(135deg, #3b6ef6 0%, #6d4aff 100%);
+    color: white;
+    font-weight: 500;
+    border-radius: 0.75rem;
+    padding: 0.625rem 1.25rem;
+    font-size: 0.875rem;
+    box-shadow: 0 4px 14px rgba(59,110,246,0.35);
+    transition: all 250ms cubic-bezier(0.4, 0, 0.2, 1);
+    border: none;
+    cursor: pointer;
+  }
+  .btn-brand:hover {
+    box-shadow: 0 8px 24px rgba(59,110,246,0.45);
+    transform: translateY(-1px);
+  }
+  .btn-brand:active {
+    transform: translateY(0) scale(0.99);
+    box-shadow: 0 2px 8px rgba(59,110,246,0.3);
+  }
+  .btn-brand:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+    transform: none;
+    box-shadow: none;
+  }
+}
+
+/* ── Leaflet map ── */
+.leaflet-container {
+  width: 100%;
+  height: 100%;
+  border-radius: inherit;
+}
+.leaflet-popup-content-wrapper {
+  background: rgba(255,255,255,0.92) !important;
+  backdrop-filter: blur(20px) !important;
+  color: #1e293b !important;
+  border: 1px solid rgba(255,255,255,0.8) !important;
+  border-radius: 14px !important;
+  box-shadow: 0 8px 32px rgba(59,110,246,0.15) !important;
+}
+.leaflet-popup-tip {
+  background: rgba(255,255,255,0.92) !important;
+}
+.leaflet-popup-close-button {
+  color: #64748b !important;
+}
+
+/* ── Scrollbar ── */
+::-webkit-scrollbar { width: 5px; height: 5px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: rgba(59,110,246,0.2); border-radius: 10px; }
+::-webkit-scrollbar-thumb:hover { background: rgba(59,110,246,0.35); }
+
+/* ── Page entry animation ── */
+.page-enter {
+  animation: fadeIn 0.35s cubic-bezier(0.4,0,0.2,1);
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+@keyframes slideUp {
+  from { opacity: 0; transform: translateY(12px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+@keyframes scaleIn {
+  from { opacity: 0; transform: scale(0.95); }
+  to   { opacity: 1; transform: scale(1); }
+}
+@keyframes shimmer {
+  from { background-position: -200% 0; }
+  to   { background-position:  200% 0; }
+}
+@keyframes pulseSoft {
+  0%, 100% { opacity: 1; }
+  50%       { opacity: 0.5; }
+}

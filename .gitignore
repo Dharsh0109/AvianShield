@@ -1,0 +1,36 @@
+# Python bytecode — never commit these
+__pycache__/
+*.py[cod]
+*.pyo
+
+# Virtual environment — never commit, recreate with pip install
+venv/
+.venv/
+env/
+
+# Environment variables — contain secrets, never commit
+.env
+*.env
+
+# ML pipeline — large binary model files
+ml_pipeline/models/*.pkl
+ml_pipeline/models/*.joblib
+
+# ML pipeline — large generated data files
+ml_pipeline/data/raw/
+ml_pipeline/data/processed/
+
+# Frontend build output
+frontend/dist/
+frontend/node_modules/
+
+# OS junk
+.DS_Store
+Thumbs.db
+
+# IDE folders
+.vscode/
+.idea/
+
+# Alembic — keep versions/ but not pycache
+backend/alembic/versions/__pycache__/
